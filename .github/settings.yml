@@ -1,0 +1,6 @@
+_extends: .github
+repository:
+  name: git
+  description: form8ion plugin for managing projects versioned with git
+  homepage: https://npm.im/@form8ion/git
+  private: false
