@@ -27,7 +27,7 @@ Run `npm run generate:md` to generate a table of contents
 ### Installation
 
 ```sh
-$ npm install @form8ion/git
+$ npm install @form8ion/git --save-prod
 ```
 
 ### Example
