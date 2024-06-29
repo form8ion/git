@@ -1,7 +1,8 @@
-import {promises as fs} from 'node:fs';
 import touch from 'touch';
 import simpleGit from 'simple-git';
 import {info} from '@travi/cli-messages';
+
+import {scaffold as scaffoldAttributes} from './attributes/index.js';
 
 export default async function ({projectRoot}) {
   info('Initializing Git Repository');
@@ -10,8 +11,8 @@ export default async function ({projectRoot}) {
 
   await Promise.all([
     touch(`${projectRoot}/.gitignore`),
-    fs.writeFile(`${projectRoot}/.gitattributes`, '* text=auto'),
-    git.init()
+    git.init(),
+    scaffoldAttributes({projectRoot})
   ]);
 
   return {};

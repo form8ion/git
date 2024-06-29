@@ -1,4 +1,4 @@
-Feature: Git Scaffolder
+Feature: Scaffold Git Repository
 
   Scenario: Scaffold
     When the project is scaffolded

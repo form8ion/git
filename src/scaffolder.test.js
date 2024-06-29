@@ -1,4 +1,3 @@
-import {promises as fs} from 'node:fs';
 import * as simpleGit from 'simple-git';
 import touch from 'touch';
 
@@ -6,11 +5,12 @@ import any from '@travi/any';
 import {expect, describe, it, vi} from 'vitest';
 import {when} from 'jest-when';
 
+import {scaffold as scaffoldAttributes} from './attributes/index.js';
 import scaffold from './scaffolder.js';
 
-vi.mock('node:fs');
 vi.mock('touch');
 vi.mock('simple-git');
+vi.mock('./attributes/index.js');
 
 describe('scaffold', () => {
   it('should initialize the repo', async () => {
@@ -23,6 +23,6 @@ describe('scaffold', () => {
     expect(results).toEqual({});
     expect(init).toHaveBeenCalled();
     expect(touch).toHaveBeenCalledWith(`${projectRoot}/.gitignore`);
-    expect(fs.writeFile).toHaveBeenCalledWith(`${projectRoot}/.gitattributes`, '* text=auto');
+    expect(scaffoldAttributes).toHaveBeenCalledWith({projectRoot});
   });
 });
