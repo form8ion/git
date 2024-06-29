@@ -12,7 +12,22 @@ form8ion plugin for managing projects versioned with git
 
 ## Table of Contents
 
-Run `npm run generate:md` to generate a table of contents
+* [Features](#features)
+* [Usage](#usage)
+  * [Installation](#installation)
+  * [Example](#example)
+    * [Import](#import)
+    * [Execute](#execute)
+* [Contributing](#contributing)
+  * [Dependencies](#dependencies)
+  * [Verification](#verification)
+
+## Features
+
+* Initializes a git repository for a project
+* Configures git to handle line endings across operating systems
+* Manages ignoring files and directories from being versioned
+* Detects an existing git repository configured for a project
 
 ## Usage
 
@@ -21,6 +36,7 @@ Run `npm run generate:md` to generate a table of contents
 [![MIT license][license-badge]][license-link]
 [![npm][npm-badge]][npm-link]
 [![Try @form8ion/git on RunKit][runkit-badge]][runkit-link]
+![node][node-badge]
 
 <!--consumer-badges end -->
 
@@ -32,7 +48,23 @@ $ npm install @form8ion/git --save-prod
 
 ### Example
 
-run `npm run generate:md` to inject the usage example
+#### Import
+
+```javascript
+import {scaffold, test, lift} from '@form8ion/git';
+```
+
+#### Execute
+
+```javascript
+const projectRoot = process.cwd();
+
+await scaffold({projectRoot});
+
+if (await test({projectRoot})) {
+  await lift({projectRoot});
+}
+```
 
 ## Contributing
 
@@ -100,3 +132,5 @@ $ npm test
 [runkit-link]: https://npm.runkit.com/@form8ion/git
 
 [runkit-badge]: https://badge.runkitcdn.com/@form8ion/git.svg
+
+[node-badge]: https://img.shields.io/node/v/@form8ion/git?logo=node.js
