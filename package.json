@@ -54,6 +54,7 @@
   },
   "packageManager": "npm@10.8.1+sha256.b8807aebb9656758e2872fa6e7c564b506aa2faa9297439a478d471d2fe32483",
   "dependencies": {
+    "@travi/cli-messages": "^1.1.1",
     "simple-git": "^3.25.0",
     "touch": "^3.1.1"
   },
