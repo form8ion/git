@@ -12,6 +12,7 @@ form8ion plugin for managing projects versioned with git
 
 ## Table of Contents
 
+* [Features](#features)
 * [Usage](#usage)
   * [Installation](#installation)
   * [Example](#example)
@@ -20,6 +21,12 @@ form8ion plugin for managing projects versioned with git
 * [Contributing](#contributing)
   * [Dependencies](#dependencies)
   * [Verification](#verification)
+
+## Features
+
+* Initializes a git repository for a project
+* Configures git to handle line endings across operating systems
+* Manages ignoring files and directories from being versioned
 
 ## Usage
 
