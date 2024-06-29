@@ -53,6 +53,10 @@
     "provenance": true
   },
   "packageManager": "npm@10.8.1+sha256.b8807aebb9656758e2872fa6e7c564b506aa2faa9297439a478d471d2fe32483",
+  "dependencies": {
+    "simple-git": "^3.25.0",
+    "touch": "^3.1.1"
+  },
   "devDependencies": {
     "@cucumber/cucumber": "10.8.0",
     "@form8ion/commitlint-config": "1.0.76",
@@ -81,9 +85,5 @@
     "rollup-plugin-auto-external": "2.0.0",
     "testdouble": "3.20.2",
     "vitest": "1.6.0"
-  },
-  "dependencies": {
-    "simple-git": "^3.25.0",
-    "touch": "^3.1.1"
   }
 }
