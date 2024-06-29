@@ -22,7 +22,6 @@ jobs:
         node:
           - 18.17.0
           - 20.6.1
-          - 21
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
