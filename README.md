@@ -27,6 +27,7 @@ form8ion plugin for managing projects versioned with git
 * Initializes a git repository for a project
 * Configures git to handle line endings across operating systems
 * Manages ignoring files and directories from being versioned
+* Detects an existing git repository configured for a project
 
 ## Usage
 
@@ -50,13 +51,19 @@ $ npm install @form8ion/git --save-prod
 #### Import
 
 ```javascript
-import {scaffold} from '@form8ion/git';
+import {scaffold, test, lift} from '@form8ion/git';
 ```
 
 #### Execute
 
 ```javascript
-await scaffold({projectRoot: process.cwd()});
+const projectRoot = process.cwd();
+
+await scaffold({projectRoot});
+
+if (await test({projectRoot})) {
+  await lift({projectRoot});
+}
 ```
 
 ## Contributing

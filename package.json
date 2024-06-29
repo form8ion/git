@@ -54,6 +54,7 @@
   },
   "packageManager": "npm@10.8.1+sha256.b8807aebb9656758e2872fa6e7c564b506aa2faa9297439a478d471d2fe32483",
   "dependencies": {
+    "@form8ion/core": "^4.3.0",
     "@travi/cli-messages": "^1.1.1",
     "simple-git": "^3.25.0",
     "touch": "^3.1.1"
@@ -61,7 +62,6 @@
   "devDependencies": {
     "@cucumber/cucumber": "10.8.0",
     "@form8ion/commitlint-config": "1.0.76",
-    "@form8ion/core": "4.3.0",
     "@form8ion/eslint-config": "7.0.9",
     "@form8ion/eslint-config-cucumber": "1.4.1",
     "@form8ion/remark-lint-preset": "6.0.3",

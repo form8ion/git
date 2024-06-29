@@ -9,14 +9,14 @@ import * as td from 'testdouble';
 const __dirname = dirname(fileURLToPath(import.meta.url));          // eslint-disable-line no-underscore-dangle
 const stubbedNodeModules = stubbedFs.load(resolve(__dirname, '..', '..', '..', '..', 'node_modules'));
 
-let scaffold;
+let scaffold, test, lift;
 
 Before(async function () {
   this.projectRoot = process.cwd();
   this.git = await td.replaceEsm('simple-git');
 
   // eslint-disable-next-line import/no-extraneous-dependencies,import/no-unresolved
-  ({scaffold} = await import('@form8ion/git'));
+  ({scaffold, test, lift} = await import('@form8ion/git'));
 
   stubbedFs({
     node_modules: stubbedNodeModules
@@ -29,6 +29,14 @@ After(function () {
 
 When('the project is scaffolded', async function () {
   this.result = await scaffold({projectRoot: this.projectRoot});
+});
+
+When('the project is lifted', async function () {
+  if (await test({projectRoot: this.projectRoot})) {
+    this.results = await lift({
+      projectRoot: this.projectRoot
+    });
+  }
 });
 
 Then('scaffold results are returned', async function () {
