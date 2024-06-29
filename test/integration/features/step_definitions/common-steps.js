@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {After, Before, Then, When} from '@cucumber/cucumber';
 import stubbedFs from 'mock-fs';
 import assert from 'node:assert';
+import * as td from 'testdouble';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));          // eslint-disable-line no-underscore-dangle
 const stubbedNodeModules = stubbedFs.load(resolve(__dirname, '..', '..', '..', '..', 'node_modules'));
@@ -12,6 +13,7 @@ let scaffold;
 
 Before(async function () {
   this.projectRoot = process.cwd();
+  this.git = await td.replaceEsm('simple-git');
 
   // eslint-disable-next-line import/no-extraneous-dependencies,import/no-unresolved
   ({scaffold} = await import('@form8ion/git'));

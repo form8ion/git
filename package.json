@@ -29,7 +29,7 @@
     "lint:peer": "npm ls >/dev/null",
     "pretest:integration:base": "run-s build",
     "test:integration": "run-s 'test:integration:base -- --profile noWip'",
-    "test:integration:base": "NODE_OPTIONS=--enable-source-maps DEBUG=any cucumber-js test/integration",
+    "test:integration:base": "NODE_OPTIONS=\"--loader=testdouble --enable-source-maps\" DEBUG=any cucumber-js test/integration",
     "test:integration:debug": "DEBUG=test run-s test:integration",
     "test:integration:wip": "run-s 'test:integration:base -- --profile wip'",
     "test:integration:wip:debug": "DEBUG=test run-s 'test:integration:wip'",
@@ -74,9 +74,11 @@
     "rimraf": "5.0.7",
     "rollup": "4.18.0",
     "rollup-plugin-auto-external": "2.0.0",
+    "testdouble": "3.20.2",
     "vitest": "1.6.0"
   },
   "dependencies": {
+    "simple-git": "^3.25.0",
     "touch": "^3.1.1"
   }
 }
