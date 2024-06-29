@@ -12,7 +12,14 @@ form8ion plugin for managing projects versioned with git
 
 ## Table of Contents
 
-Run `npm run generate:md` to generate a table of contents
+* [Usage](#usage)
+  * [Installation](#installation)
+  * [Example](#example)
+    * [Import](#import)
+    * [Execute](#execute)
+* [Contributing](#contributing)
+  * [Dependencies](#dependencies)
+  * [Verification](#verification)
 
 ## Usage
 
@@ -33,7 +40,17 @@ $ npm install @form8ion/git --save-prod
 
 ### Example
 
-run `npm run generate:md` to inject the usage example
+#### Import
+
+```javascript
+import {scaffold} from '@form8ion/git';
+```
+
+#### Execute
+
+```javascript
+await scaffold({projectRoot: process.cwd()});
+```
 
 ## Contributing
 

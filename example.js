@@ -8,6 +8,4 @@ stubbedFs();
 
 // #### Execute
 
-(async () => {
-  await scaffold({projectRoot: process.cwd()});
-})();
+await scaffold({projectRoot: process.cwd()});
