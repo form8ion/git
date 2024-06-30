@@ -16,3 +16,16 @@ Feature: Lift Git Repository
     And git is missing the attributes file
     When the project is lifted
     Then the attributes file is defined
+
+  Scenario: no additional ignores
+    Given the project is versioned with git
+    But no additional ignores are provided for vcs
+    When the project is lifted
+    Then the gitignore file is unchanged
+
+  Scenario: additional directories and files
+    Given the project is versioned with git
+    And additional directories are provided to be ignored from vcs
+    And additional files are provided to be ignored from vcs
+    When the project is lifted
+    Then the additional ignores are added to the gitignore

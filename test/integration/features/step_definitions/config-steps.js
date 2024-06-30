@@ -1,12 +1,11 @@
 import {promises as fs} from 'node:fs';
-import touch from 'touch';
 import {fileExists} from '@form8ion/core';
 
 import assert from 'node:assert';
 import {Given, Then} from '@cucumber/cucumber';
 
 Given('git is properly configured', async function () {
-  await touch(`${this.projectRoot}/.gitattributes`);
+  await fs.writeFile(`${this.projectRoot}/.gitattributes`, '');
 });
 
 Given('git is missing the attributes file', async function () {

@@ -13,5 +13,5 @@ const projectRoot = process.cwd();
 await scaffold({projectRoot});
 
 if (await test({projectRoot})) {
-  await lift({projectRoot});
+  await lift({projectRoot, results: {vcsIgnore: {file: [], directories: []}}});
 }

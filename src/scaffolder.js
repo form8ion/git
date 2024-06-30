@@ -1,6 +1,7 @@
-import touch from 'touch';
 import simpleGit from 'simple-git';
 import {info} from '@travi/cli-messages';
+
+import {scaffold as scaffoldIgnore} from './ignore/index.js';
 
 export default async function ({projectRoot}) {
   info('Initializing Git Repository');
@@ -8,7 +9,7 @@ export default async function ({projectRoot}) {
   const git = simpleGit({baseDir: projectRoot});
 
   await Promise.all([
-    touch(`${projectRoot}/.gitignore`),
+    scaffoldIgnore({projectRoot}),
     git.init()
   ]);
 

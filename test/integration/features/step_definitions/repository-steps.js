@@ -1,7 +1,8 @@
-import touch from 'touch';
+import {promises as fs} from 'node:fs';
 
 import * as td from 'testdouble';
 import {Before, Given, Then} from '@cucumber/cucumber';
+import any from '@travi/any';
 
 const simpleGitInstance = td.object(['init']);
 
@@ -10,7 +11,13 @@ Before(async function () {
 });
 
 Given('the project is versioned with git', async function () {
-  await touch(`${this.projectRoot}/.gitignore`);
+  this.existingVcsIgnoredFiles = any.listOf(any.word);
+  this.existingVcsIgnoredDirectories = any.listOf(any.word);
+
+  await fs.writeFile(
+    `${this.projectRoot}/.gitignore`,
+    `${this.existingVcsIgnoredDirectories.join('\n')}\n\n${this.existingVcsIgnoredFiles.join('\n')}`
+  );
 });
 
 Given('the project is not versioned with git', async function () {

@@ -34,7 +34,15 @@ When('the project is scaffolded', async function () {
 When('the project is lifted', async function () {
   if (await test({projectRoot: this.projectRoot})) {
     this.results = await lift({
-      projectRoot: this.projectRoot
+      projectRoot: this.projectRoot,
+      results: {
+        ...(this.vcsIgnoreDirectories || this.vcsIgnoreFiles) && {
+          vcsIgnore: {
+            ...this.vcsIgnoreDirectories && {directories: this.vcsIgnoreDirectories},
+            ...this.vcsIgnoreFiles && {files: this.vcsIgnoreFiles}
+          }
+        }
+      }
     });
   }
 });
