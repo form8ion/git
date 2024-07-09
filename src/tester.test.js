@@ -1,24 +1,33 @@
-import {fileExists} from '@form8ion/core';
+import * as simpleGit from 'simple-git';
 
 import any from '@travi/any';
-import {describe, it, expect, vi} from 'vitest';
+import {beforeEach, describe, it, expect, vi} from 'vitest';
 import {when} from 'jest-when';
 
 import gitIsPresent from './tester.js';
 
-vi.mock('@form8ion/core');
+vi.mock('simple-git');
 
 describe('git predicate', () => {
+  let checkIsRepo;
   const projectRoot = any.string();
 
+  beforeEach(() => {
+    checkIsRepo = vi.fn();
+
+    when(simpleGit.simpleGit)
+      .calledWith({baseDir: projectRoot})
+      .mockReturnValue({checkIsRepo});
+  });
+
   it('should return `true` if a `.gitignore` file exists', async () => {
-    when(fileExists).calledWith(`${projectRoot}/.gitignore`).mockResolvedValue(true);
+    when(checkIsRepo).calledWith('root').mockResolvedValue(true);
 
     expect(await gitIsPresent({projectRoot})).toBe(true);
   });
 
   it('should return `false` if a `.gitignore` file does not exist', async () => {
-    when(fileExists).calledWith(`${projectRoot}/.gitignore`).mockResolvedValue(false);
+    when(checkIsRepo).calledWith('root').mockResolvedValue(false);
 
     expect(await gitIsPresent({projectRoot})).toBe(false);
   });

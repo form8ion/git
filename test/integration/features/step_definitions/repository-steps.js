@@ -4,7 +4,7 @@ import * as td from 'testdouble';
 import {Before, Given, Then} from '@cucumber/cucumber';
 import any from '@travi/any';
 
-const simpleGitInstance = td.object(['init']);
+const simpleGitInstance = td.object(['checkIsRepo', 'init']);
 
 Before(async function () {
   td.when(this.git.simpleGit({baseDir: this.projectRoot})).thenReturn(simpleGitInstance);
@@ -18,10 +18,12 @@ Given('the project is versioned with git', async function () {
     `${this.projectRoot}/.gitignore`,
     `${this.existingVcsIgnoredDirectories.join('\n')}\n\n${this.existingVcsIgnoredFiles.join('\n')}`
   );
+
+  td.when(simpleGitInstance.checkIsRepo('root')).thenResolve(true);
 });
 
 Given('the project is not versioned with git', async function () {
-  return undefined;
+  td.when(simpleGitInstance.checkIsRepo('root')).thenResolve(false);
 });
 
 Then('a git repo is initialized', async function () {

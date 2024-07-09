@@ -1,5 +1,7 @@
-import {fileExists} from '@form8ion/core';
+import simpleGit from 'simple-git';
 
 export default function ({projectRoot}) {
-  return fileExists(`${projectRoot}/.gitignore`);
+  const git = simpleGit({baseDir: projectRoot});
+
+  return git.checkIsRepo('root');
 }
