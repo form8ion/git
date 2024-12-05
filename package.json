@@ -52,7 +52,7 @@
     "access": "public",
     "provenance": true
   },
-  "packageManager": "npm@10.9.1",
+  "packageManager": "npm@10.9.2",
   "dependencies": {
     "@form8ion/core": "^4.3.0",
     "@travi/cli-messages": "^1.1.1",
