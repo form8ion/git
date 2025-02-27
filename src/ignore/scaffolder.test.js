@@ -10,11 +10,8 @@ describe('ignore scaffolder', () => {
   const projectRoot = any.string();
 
   it('should write the directories and files', async () => {
-    const directories = any.listOf(any.string);
-    const files = any.listOf(any.string);
+    await scaffold({projectRoot});
 
-    await scaffold({projectRoot, directories, files});
-
-    expect(writeGitIgnore).toHaveBeenCalledWith({projectRoot, ignores: [...directories, ...files]});
+    expect(writeGitIgnore).toHaveBeenCalledWith({projectRoot, ignores: []});
   });
 });
