@@ -2,7 +2,8 @@ import * as simpleGit from 'simple-git';
 
 import any from '@travi/any';
 import {describe, expect, it, vi} from 'vitest';
-import {when} from 'jest-when';
+// eslint-disable-next-line import/no-unresolved
+import {when} from 'vitest-when';
 
 import {scaffold as scaffoldIgnore} from './ignore/index.js';
 import scaffold from './scaffolder.js';
@@ -15,7 +16,7 @@ describe('scaffold', () => {
   it('should initialize the repo', async () => {
     const projectRoot = any.string();
     const init = vi.fn();
-    when(simpleGit.simpleGit).calledWith({baseDir: projectRoot}).mockReturnValue({init});
+    when(simpleGit.simpleGit).calledWith({baseDir: projectRoot}).thenReturn({init});
 
     const results = await scaffold({projectRoot});
 

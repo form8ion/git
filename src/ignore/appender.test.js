@@ -1,5 +1,6 @@
 import {describe, it, vi, expect} from 'vitest';
-import {when} from 'jest-when';
+// eslint-disable-next-line import/no-unresolved
+import {when} from 'vitest-when';
 import any from '@travi/any';
 
 import read from './reader.js';
@@ -15,7 +16,7 @@ describe('gitignore appender', () => {
 
   it('should add the provided ignores to the existing gitignore', async () => {
     const ignores = any.listOf(any.string);
-    when(read).calledWith({projectRoot}).mockResolvedValue(existingIgnores);
+    when(read).calledWith({projectRoot}).thenResolve(existingIgnores);
 
     await appendToIgnoreFile({projectRoot, ignores});
 
