@@ -1,5 +1,5 @@
-import {promises as fs} from 'node:fs';
+import {write} from '@form8ion/ignore-file';
 
-export default function ({projectRoot, files = [], directories = []}) {
-  return fs.appendFile(`${projectRoot}/.gitignore`, `\n${directories.join('\n')}\n\n${files.join('\n')}`);
+export default function writeGitIgnore({projectRoot, ignores}) {
+  return write({projectRoot, name: 'git', ignores});
 }

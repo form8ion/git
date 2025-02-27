@@ -1,18 +1,20 @@
-import {promises as fs} from 'node:fs';
-
 import {describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
 
-import scaffold from './scaffold.js';
+import writeGitIgnore from './writer.js';
+import scaffold from './scaffolder.js';
 
-vi.mock('node:fs');
+vi.mock('./writer.js');
 
-describe('gitignore scaffolder', () => {
+describe('ignore scaffolder', () => {
   const projectRoot = any.string();
 
-  it('should create the ignore file when patterns are defined', async () => {
-    await scaffold({projectRoot});
+  it('should write the directories and files', async () => {
+    const directories = any.listOf(any.string);
+    const files = any.listOf(any.string);
 
-    expect(fs.writeFile).toHaveBeenCalledWith(`${projectRoot}/.gitignore`, '');
+    await scaffold({projectRoot, directories, files});
+
+    expect(writeGitIgnore).toHaveBeenCalledWith({projectRoot, ignores: [...directories, ...files]});
   });
 });

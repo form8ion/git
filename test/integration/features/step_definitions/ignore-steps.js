@@ -24,7 +24,6 @@ Then('the additional ignores are added to the gitignore', async function () {
 
 ${this.existingVcsIgnoredFiles.join('\n')}
 ${this.vcsIgnoreDirectories.join('\n')}
-
 ${this.vcsIgnoreFiles.join('\n')}`
   );
 });

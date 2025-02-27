@@ -1,30 +1,19 @@
-import {promises as fs} from 'node:fs';
+import {write} from '@form8ion/ignore-file';
 
-import {describe, expect, it, vi} from 'vitest';
+import {describe, it, vi, expect} from 'vitest';
 import any from '@travi/any';
 
-import write from './writer.js';
+import writeGitIgnore from './writer.js';
 
-vi.mock('node:fs');
+vi.mock('@form8ion/ignore-file');
 
 describe('gitignore writer', () => {
-  const projectRoot = any.string();
+  it('should write the provided ignores to the .gitignore file', async () => {
+    const projectRoot = any.string();
+    const ignores = any.listOf(any.string);
 
-  it('should create the ignore file when patterns are defined', async () => {
-    const directories = any.listOf(any.string);
-    const files = any.listOf(any.string);
+    await writeGitIgnore({projectRoot, ignores});
 
-    await write({projectRoot, directories, files});
-
-    expect(fs.appendFile).toHaveBeenCalledWith(
-      `${projectRoot}/.gitignore`,
-      `\n${directories.join('\n')}\n\n${files.join('\n')}`
-    );
-  });
-
-  it('should not throw an error if directories nor files are provided', async () => {
-    await write({projectRoot});
-
-    expect(fs.appendFile).toHaveBeenCalledWith(`${projectRoot}/.gitignore`, '\n\n\n');
+    expect(write).toHaveBeenCalledWith({projectRoot, name: 'git', ignores});
   });
 });
