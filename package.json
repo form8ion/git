@@ -46,7 +46,8 @@
   },
   "files": [
     "example.js",
-    "lib/"
+    "lib/",
+    "src/"
   ],
   "publishConfig": {
     "access": "public",
