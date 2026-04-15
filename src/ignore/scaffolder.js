@@ -1,5 +1,5 @@
 import write from './writer.js';
 
-export default function ({projectRoot}) {
+export default function scaffoldeIgnore({projectRoot}) {
   return write({projectRoot, ignores: []});
 }

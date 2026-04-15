@@ -3,7 +3,7 @@ import {info} from '@travi/cli-messages';
 
 import {scaffold as scaffoldIgnore} from './ignore/index.js';
 
-export default async function ({projectRoot}) {
+export default async function scaffoldGit({projectRoot}) {
   info('Initializing Git Repository');
 
   const git = simpleGit({baseDir: projectRoot});
