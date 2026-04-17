@@ -62,7 +62,7 @@
     "simple-git": "^3.25.0"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "11.3.0",
+    "@cucumber/cucumber": "12.8.1",
     "@form8ion/commitlint-config": "2.0.11",
     "@form8ion/eslint-config": "7.1.0-beta.1",
     "@form8ion/eslint-config-cucumber": "1.4.1",
