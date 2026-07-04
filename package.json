@@ -8,7 +8,10 @@
     "node": "^18.19.0 || ^20.9.0 || >=22.11.0"
   },
   "author": "Matt Travi <npm@travi.org> (https://matt.travi.org)",
-  "repository": "form8ion/git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/form8ion/git.git"
+  },
   "bugs": "https://github.com/form8ion/git/issues",
   "homepage": "https://www.npmjs.com/package/@form8ion/git",
   "runkitExampleFilename": "./example.js",
