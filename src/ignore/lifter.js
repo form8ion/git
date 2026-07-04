@@ -1,10 +1,8 @@
-import {info} from '@travi/cli-messages';
-
 import appendIgnores from './appender.js';
 
-export default async function liftIgnore({projectRoot, results: {vcsIgnore}}) {
+export default async function liftIgnore({projectRoot, results: {vcsIgnore}}, {logger}) {
   if (vcsIgnore) {
-    info('Updating files and directories to be ignored from version control', {level: 'secondary'});
+    logger.info('Updating files and directories to be ignored from version control', {level: 'secondary'});
 
     const {directories = [], files = []} = vcsIgnore;
 

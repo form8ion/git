@@ -9,9 +9,15 @@ stubbedFs();
 // #### Execute
 
 const projectRoot = process.cwd();
+const logger = {
+  info: () => undefined,
+  success: () => undefined,
+  warn: () => undefined,
+  error: () => undefined
+};
 
-await scaffold({projectRoot});
+await scaffold({projectRoot}, {logger});
 
 if (await test({projectRoot})) {
-  await lift({projectRoot, results: {vcsIgnore: {file: [], directories: []}}});
+  await lift({projectRoot, results: {vcsIgnore: {file: [], directories: []}}}, {logger});
 }

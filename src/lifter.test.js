@@ -12,11 +12,12 @@ describe('git lifter', () => {
   it('should define the attributes file', async () => {
     const projectRoot = any.string();
     const results = any.simpleObject();
+    const dependencies = any.simpleObject();
 
-    const result = await lift({projectRoot, results});
+    const result = await lift({projectRoot, results}, dependencies);
 
     expect(result).toEqual({});
     expect(scaffoldAttributes).toHaveBeenCalledWith({projectRoot});
-    expect(liftIgnore).toHaveBeenCalledWith({projectRoot, results});
+    expect(liftIgnore).toHaveBeenCalledWith({projectRoot, results}, dependencies);
   });
 });

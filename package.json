@@ -59,9 +59,8 @@
   },
   "packageManager": "npm@11.12.1+sha512.cdca14b85d647b3192028d02aadbe82d75f79a446aceea9874be98e6d768f20ebd3555770a48d0e9906106007877bbc690f715e9372f2e2dc644a3c3157fb14c",
   "dependencies": {
-    "@form8ion/core": "^4.3.0",
+    "@form8ion/core": "^5.0.0-beta.15",
     "@form8ion/ignore-file": "^1.0.0",
-    "@travi/cli-messages": "^1.1.1",
     "simple-git": "^3.25.0"
   },
   "devDependencies": {
@@ -74,6 +73,7 @@
     "@vitest/coverage-v8": "4.1.4",
     "chai": "6.2.2",
     "cz-conventional-changelog": "3.3.0",
+    "debug": "4.4.3",
     "gplint": "2.5.2",
     "husky": "9.1.7",
     "lockfile-lint": "5.0.0",

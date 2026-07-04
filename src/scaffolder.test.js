@@ -16,9 +16,10 @@ describe('scaffold', () => {
   it('should initialize the repo', async () => {
     const projectRoot = any.string();
     const init = vi.fn();
+    const logger = {info: () => undefined};
     when(simpleGit.simpleGit).calledWith({baseDir: projectRoot}).thenReturn({init});
 
-    const results = await scaffold({projectRoot});
+    const results = await scaffold({projectRoot}, {logger});
 
     expect(results).toEqual({});
     expect(init).toHaveBeenCalled();

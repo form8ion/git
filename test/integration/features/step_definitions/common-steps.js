@@ -5,9 +5,17 @@ import {After, Before, Then, When} from '@cucumber/cucumber';
 import stubbedFs from 'mock-fs';
 import assert from 'node:assert';
 import * as td from 'testdouble';
+import debugConstructor from 'debug';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));          // eslint-disable-line no-underscore-dangle
 const stubbedNodeModules = stubbedFs.load(resolve(__dirname, '..', '..', '..', '..', 'node_modules'));
+const debug = debugConstructor('test:common-steps');
+const logger = {
+  info: debug,
+  success: debug,
+  warn: debug,
+  error: debug
+};
 
 let scaffold, test, lift;
 
@@ -28,7 +36,7 @@ After(function () {
 });
 
 When('the project is scaffolded', async function () {
-  this.result = await scaffold({projectRoot: this.projectRoot});
+  this.result = await scaffold({projectRoot: this.projectRoot}, {logger});
 });
 
 When('the project is lifted', async function () {
@@ -43,7 +51,7 @@ When('the project is lifted', async function () {
           }
         }
       }
-    });
+    }, {logger});
   }
 });
 
